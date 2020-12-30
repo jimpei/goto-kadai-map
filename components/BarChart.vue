@@ -1,5 +1,7 @@
 <template>
   <div class="w-full xl:w-4/12 px-4">
+<!--    {{issueListSize}}-->
+<!--    {{issueList}}-->
     <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
       <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
         <div class="flex flex-wrap items-center">
@@ -28,6 +30,12 @@ import firebase from '@/plugins/firebase';
 const db = firebase.firestore();
 
 export default {
+  data: function() {
+    return {
+      issueList: [],
+      issueListSize: 0,
+    }
+  },
   mounted: function() {
     this.selectDB();
     this.$nextTick(function() {
@@ -132,8 +140,34 @@ export default {
       console.log("select db start.");
       const querySnapshot = await db.collection('issueList').get();
       console.log(querySnapshot)
+
+      function dateFormat(d) {
+        return d.getFullYear() + "/"
+          + (d.getMonth() + 1).toString().padStart(2, '0') + "/"
+          + d.getDate().toString().padStart(2, '0') + " "
+          + d.getHours().toString().padStart(2, '0') + ":"
+          + d.getMinutes().toString().padStart(2, '0')
+      }
       querySnapshot.docs.map(doc => {
         console.log(doc.data());
+        const createdAt = new Date(doc.data().createdAt.seconds * 1000);
+        const updatedAt = new Date(doc.data().updatedAt.seconds * 1000);
+        const hearingDate = new Date(doc.data().hearingDate.seconds * 1000);
+
+        this.issueList.push({
+          hearingDate: dateFormat(hearingDate),
+          title: doc.data().title,
+          classification: doc.data().classification,
+          contents: doc.data().contents,
+          solution: doc.data().solution,
+          source: doc.data().source,
+          relatedPopulation: doc.data().relatedPopulation,
+          urgencyLevel: doc.data().urgencyLevel,
+          difficultyLevel: doc.data().difficultyLevel,
+          createdAt: dateFormat(createdAt),
+          updatedAt: dateFormat(updatedAt),
+        });
+        this.issueListSize = this.issueList.length;
       })
 
     }
