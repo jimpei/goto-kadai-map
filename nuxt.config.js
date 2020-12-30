@@ -1,5 +1,5 @@
-const myCityNameJp = process.env.MY_CITY_NAME_JP || '名前無し'
-const myCityNameEn = process.env.MY_CITY_NAME_EN || 'NoName'
+const myCityNameJp = '五島'
+const myCityNameEn = 'goto'
 const environment = 'prod'
 import colors from 'vuetify/es5/util/colors'
 
