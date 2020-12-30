@@ -24,9 +24,12 @@
 </template>
 <script>
 import Chart from "chart.js";
+import firebase from '@/plugins/firebase';
+const db = firebase.firestore();
 
 export default {
   mounted: function() {
+    this.selectDB();
     this.$nextTick(function() {
       let config = {
         type: "bar",
@@ -123,6 +126,17 @@ export default {
       let ctx = document.getElementById("bar-chart").getContext("2d");
       window.myBar = new Chart(ctx, config);
     });
+  },
+  methods: {
+    async selectDB() {
+      console.log("select db start.");
+      const querySnapshot = await db.collection('issueList').get();
+      console.log(querySnapshot)
+      querySnapshot.docs.map(doc => {
+        console.log(doc.data());
+      })
+
+    }
   }
 };
 </script>

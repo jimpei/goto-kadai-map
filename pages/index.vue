@@ -4,6 +4,7 @@
       <v-col cols="12" sm="12" md="12">
         <Login/>
         <AddData/>
+        <BarChart/>
       </v-col>
       <v-col cols="12" sm="8" md="6">
         <div class="text-center">
@@ -87,6 +88,7 @@
   import VuetifyLogo from '~/components/VuetifyLogo.vue'
   import Login from '~/components/ModalLogin.vue'
   import AddData from '~/components/ModalAddData.vue'
+  import BarChart from '~/components/BarChart.vue'
 
   export default {
     components: {
@@ -94,6 +96,7 @@
       VuetifyLogo,
       Login,
       AddData,
+      BarChart,
     }
   }
 </script>

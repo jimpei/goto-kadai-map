@@ -47,7 +47,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    
+
     <v-snackbar v-model="snackbar" color="success" absolute top right timeout="2000">
       ログインに成功しました
       <template v-slot:action="{ attrs }">
