@@ -1,7 +1,7 @@
 <template>
   <v-app >
     <!-- sidebar   -->
-    <v-navigation-drawer v-model="drawer" :clipped="clipped" mobile-breakpoint="800" fixed app>
+    <v-navigation-drawer v-model="drawer" :clipped="clipped" mobile-breakpoint="800" fixed app class="side-bar">
       <div class="side-title">{{title}}</div>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
@@ -16,7 +16,7 @@
     </v-navigation-drawer>
 
     <!-- header   -->
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar :clipped-left="clipped" flat fixed app color="#eef2f7">
       <!-- sidebarにタイトルが表示されるため、sidebar表示時にはこっちのタイトルを消す -->
 
       <v-app-bar-nav-icon v-if="!drawer" @click.stop="drawer = !drawer" />
@@ -31,7 +31,7 @@
     </v-app-bar>
 
     <!-- main   -->
-    <v-main class="main">
+    <v-main class="background-color">
       <v-container>
         <nuxt />
       </v-container>
@@ -45,11 +45,17 @@
 </template>
 
 <style scoped>
-  .main {
-    background-color: #EEEEEE;
+  .background-color {
+    background-color: #eef2f7;
   }
   .side-title {
     margin: 30px 30px 0px 20px;
+  }
+  .side-bar {
+    box-shadow: 1px -1px 19px 0px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04);
+  }
+  .v-navigation-drawer__border{
+    width: 0;
   }
 </style>
 
