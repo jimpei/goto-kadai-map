@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "PORT=3333 nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
@@ -13,16 +13,14 @@
     "@firebase/auth": "^0.16.1",
     "@firebase/firestore": "^2.1.1",
     "@firebase/storage": "^0.4.2",
-    "@fortawesome/fontawesome-free": "^5.15.1",
     "@nuxtjs/dotenv": "^1.4.1",
     "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6",
-    "popper.js": "^1.16.1",
-    "vue-chartjs": "^3.5.1"
+    "vue-chartjs": "^3.5.1",
+    "nuxt": "^2.14.6"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^3.4.2",
+    "@nuxtjs/vuetify": "^1.11.2",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.1.2"
