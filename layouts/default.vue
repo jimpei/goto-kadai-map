@@ -1,7 +1,7 @@
 <template>
-  <v-app dark>
+  <v-app >
     <!-- sidebar   -->
-    <v-navigation-drawer v-model="drawer" :clipped="clipped" fixed app>
+    <v-navigation-drawer v-model="drawer" :clipped="clipped" mobile-breakpoint="800" fixed app>
       <div class="side-title">{{title}}</div>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
@@ -31,7 +31,7 @@
     </v-app-bar>
 
     <!-- main   -->
-    <v-main>
+    <v-main class="main">
       <v-container>
         <nuxt />
       </v-container>
@@ -45,8 +45,11 @@
 </template>
 
 <style scoped>
+  .main {
+    background-color: #EEEEEE;
+  }
   .side-title {
-    margin: 10px;
+    margin: 30px 30px 0px 20px;
   }
 </style>
 
