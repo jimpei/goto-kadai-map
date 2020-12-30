@@ -1,6 +1,10 @@
 <template>
   <div>
     <v-row justify="center" align="center">
+      <v-col cols="12" sm="12" md="12">
+        <Login/>
+        <AddData/>
+      </v-col>
       <v-col cols="12" sm="8" md="6">
         <div class="text-center">
           <logo />
@@ -75,8 +79,6 @@
         </v-card>
       </v-col>
     </v-row>
-
-    <Login/>
   </div>
 </template>
 
@@ -84,12 +86,14 @@
   import Logo from '~/components/Logo.vue'
   import VuetifyLogo from '~/components/VuetifyLogo.vue'
   import Login from '~/components/ModalLogin.vue'
+  import AddData from '~/components/ModalAddData.vue'
 
   export default {
     components: {
       Logo,
       VuetifyLogo,
       Login,
+      AddData,
     }
   }
 </script>
