@@ -17,11 +17,16 @@
 
     <!-- header   -->
     <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="clipped = !clipped">
+      <!-- sidebarにタイトルが表示されるため、sidebar表示時にはこっちのタイトルを消す -->
+
+      <v-app-bar-nav-icon v-if="!drawer" @click.stop="drawer = !drawer" />
+
+      <v-btn v-if="!drawer" icon @click.stop="clipped = !clipped">
         <v-icon>mdi-application</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="title" />
+
+      <v-toolbar-title v-if="!drawer" v-text="title" />
+
       <v-spacer />
     </v-app-bar>
 
@@ -67,8 +72,8 @@ export default {
         }
       ],
       // miniVariant: false,
-      right: true,
-      rightDrawer: false,
+      // right: true,
+      // rightDrawer: false,
     }
   }
 }
