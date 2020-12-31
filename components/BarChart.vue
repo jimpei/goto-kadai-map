@@ -110,7 +110,7 @@ export default {
         this.data.push(
           {
             data: [{"x": issue.urgencyLevel - 50, "y":issue.difficultyLevel - 50, "r": 10}] ,
-            backgroundColor:[color.color],
+            backgroundColor:[color ? color.color : "gray"],
             label: [issue.title]
           }
         );

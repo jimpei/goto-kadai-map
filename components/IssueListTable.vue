@@ -17,7 +17,7 @@
           <div class="relative">
             <v-data-table :headers="tableHeader" :items="issueList" class="elevation-1">
               <template v-slot:item.classification="{ item }">
-                <v-chip :color="getColor(item.classification)" dark>
+                <v-chip x-small :color="getColor(item.classification)" dark>
                   {{ item.classification }}
                 </v-chip>
               </template>
@@ -50,6 +50,8 @@ export default {
         { text: '内容', value: 'contents' },
         { text: '対応案', value: 'solution' },
         { text: '情報源', value: 'source' },
+        { text: 'ステータス', value: 'status' },
+        { text: '地域', value: 'area' },
         { text: '関係人口', value: 'relatedPopulation' },
         { text: '緊急度(0~100)', value: 'urgencyLevel' },
         { text: '実現難易度(0~100)', value: 'difficultyLevel' },

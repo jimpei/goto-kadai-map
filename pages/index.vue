@@ -68,6 +68,7 @@
           contents: "",
           solution: "",
           source: "",
+          status: "",
           relatedPopulation: "",
           urgencyLevel: "",
           difficultyLevel: "",
@@ -99,15 +100,16 @@
           console.log(doc.data());
           const createdAt = new Date(doc.data().createdAt.seconds * 1000);
           const updatedAt = new Date(doc.data().updatedAt.seconds * 1000);
-          const hearingDate = new Date(doc.data().hearingDate.seconds * 1000);
 
           this.issueList.push({
-            hearingDate: dateFormat(hearingDate),
+            hearingDate: doc.data().hearingDate,
             title: doc.data().title,
             classification: doc.data().classification,
             contents: doc.data().contents,
             solution: doc.data().solution,
             source: doc.data().source,
+            status: doc.data().status,
+            area: doc.data().area,
             relatedPopulation: doc.data().relatedPopulation,
             urgencyLevel: doc.data().urgencyLevel,
             difficultyLevel: doc.data().difficultyLevel,
@@ -118,6 +120,5 @@
         })
       }
     }
-
   }
 </script>
