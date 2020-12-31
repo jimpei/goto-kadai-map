@@ -74,7 +74,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" dark @click="updateData">Save</v-btn>
+          <v-btn color="blue darken-1" dark @click="updateData" :loading="isLoad">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -94,6 +94,7 @@
     data() {
       return {
         dialog: false,
+        isLoad: false,
         calendarMenu: false,
         hearingDate: new Date().toISOString().substr(0, 7),
         title: '',
@@ -110,6 +111,7 @@
     },
     methods: {
       async updateData() {
+        this.isLoad = true;
         console.log("updateDate start.");
         console.log(this.hearingDate);
         console.log(this.title);
@@ -141,9 +143,12 @@
         } catch (e) {
           // return;
           console.log(e);
+          this.isLoad = false;
           return;
         }
 
+        console.log("db insert success.");
+        this.isLoad = false;
         this.dialog = false;
       }
     }
