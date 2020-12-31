@@ -16,7 +16,26 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="聞き取り日" required></v-text-field>
+                <v-menu
+                  ref="calendarMenu"
+                  v-model="calendarMenu"
+                  :close-on-content-click="false"
+                  :return-value.sync="calendarDate"
+                  transition="scale-transition"
+                  offset-y
+                  max-width="290px"
+                  min-width="290px"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-text-field v-model="calendarDate" label="聞き取り日"
+                                  prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on"/>
+                  </template>
+                  <v-date-picker v-model="calendarDate" locale="jp" type="month" no-title scrollable>
+                    <v-spacer></v-spacer>
+                    <v-btn text color="primary" @click="calendarMenu = false">Cancel</v-btn>
+                    <v-btn text color="primary" @click="$refs.calendarMenu.save(calendarDate)">OK</v-btn>
+                  </v-date-picker>
+                </v-menu>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field label="題目" hint="example of helper text only on focus"></v-text-field>
@@ -74,12 +93,8 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false">
-            Close
-          </v-btn>
-          <v-btn color="blue darken-1" text @click="dialog = false">
-            Save
-          </v-btn>
+          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+          <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -96,6 +111,8 @@
     data() {
       return {
         dialog: false,
+        calendarDate: new Date().toISOString().substr(0, 7),
+        calendarMenu: false,
       }
     }
   }
