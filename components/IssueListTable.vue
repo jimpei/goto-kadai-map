@@ -8,7 +8,7 @@
               <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">Performance</h6>
               <h2 class="text-gray-800 text-xl font-semibold">課題リスト</h2>
               <div class="add-button">
-                <ModalAddData/>
+                <ModalAddData @doneAddData="doneAddData"/>
               </div>
             </div>
           </div>
@@ -70,6 +70,9 @@ export default {
       const color = this.colorSet.find(value => value.label === data[0]);
       return color ? color.color : 'gray';
     },
+    doneAddData() {
+      this.$emit('doneAddData');
+    }
   }
 };
 </script>

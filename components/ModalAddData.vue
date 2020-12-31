@@ -150,6 +150,7 @@
         console.log("db insert success.");
         this.isLoad = false;
         this.dialog = false;
+        this.$emit('doneAddData');
       }
     }
   }

@@ -8,7 +8,7 @@
           <v-row justify="center" align="center">
             <v-col cols="12" sm="12" md="12">
               <BarChart :issueList="issueList"/>
-              <IssueListTable :issue-list="issueList"/>
+              <IssueListTable :issue-list="issueList" @doneAddData="selectDB"/>
             </v-col>
             <v-col cols="12" sm="8" md="6">
               <div class="text-center">
