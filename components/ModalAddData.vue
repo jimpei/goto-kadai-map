@@ -27,8 +27,7 @@
                   min-width="290px"
                 >
                   <template v-slot:activator="{ on, attrs }">
-                    <v-text-field v-model="calendarDate" label="聞き取り日"
-                                  prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on"/>
+                    <v-text-field v-model="calendarDate" label="聞き取り日" readonly v-bind="attrs" v-on="on"/>
                   </template>
                   <v-date-picker v-model="calendarDate" locale="jp" type="month" no-title scrollable>
                     <v-spacer></v-spacer>
@@ -38,54 +37,35 @@
                 </v-menu>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="題目" hint="example of helper text only on focus"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="分類"
-                  hint="example of persistent helper text"
-                  persistent-hint
-                  required
-                ></v-text-field>
+                <v-text-field label="分類" hint="分類です"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="内容" required></v-text-field>
+                <v-text-field label="題目" hint="タイトルです"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="対応案" type="password" required
-                ></v-text-field>
+                <v-text-field label="内容" hint="内容です"></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field label="対応案" hint="対応案です"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-select
-                  :items="['0-17', '18-29', '30-54', '54+']"
-                  label="情報源"
-                  required
-                ></v-select>
+                <v-text-field label="情報源" hint="情報源です"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                  label="地区"
-                  multiple
-                ></v-autocomplete>
+                <v-text-field label="地区" hint="地区です"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                  label="取り組みステータス"
-                  multiple
-                ></v-autocomplete>
+                <v-text-field label="取り組みステータス" hint="取り組みステータスです"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="関係人口" required></v-text-field>
+                <v-text-field label="関係人口" hint="1, 1000など"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="緊急度" required></v-text-field>
+                <v-text-field label="緊急度" hint="0~100"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="実現難易度" required></v-text-field>
+                <v-text-field label="実現難易度" hint="0~100"></v-text-field>
               </v-col>
-
             </v-row>
           </v-container>
           <small>*indicates required field</small>
