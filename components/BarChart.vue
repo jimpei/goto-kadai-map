@@ -8,7 +8,7 @@
           <div class="flex flex-wrap items-center">
             <div class="relative w-full max-w-full flex-grow flex-1">
               <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">Performance</h6>
-              <h2 class="text-gray-800 text-xl font-semibold">Total orders</h2>
+              <h2 class="text-gray-800 text-xl font-semibold">課題MAP</h2>
             </div>
           </div>
         </div>
@@ -85,11 +85,19 @@ export default {
           scales: {
             // x軸
             xAxes: [{
-              ticks: {max: 50, min: -50,stepSize: 10}
+              ticks: {max: 50, min: -50,stepSize: 10},
+              scaleLabel: {
+                display: true,
+                labelString: '緊急度'
+              },
             }],
-            // x軸
+            // y軸
             yAxes: [{
-              ticks: {max: 50,min: -50,stepSize: 10}
+              ticks: {max: 50,min: -50,stepSize: 10},
+              scaleLabel: {
+                display: true,
+                labelString: '実現難易度'
+              },
             }]
           },
           maintainAspectRatio: false,
@@ -97,9 +105,9 @@ export default {
           tooltips: {
             callbacks: {
               label: function(t, d) {
-                var rLabel = d.datasets[t.datasetIndex].data[t.index].r;
+                let rLabel = d.datasets[t.datasetIndex].data[t.index].r;
                 return d.datasets[t.datasetIndex].label +
-                  ': (x軸:' + t.xLabel + ', y軸:' + t.yLabel + ', 円の大きさ:' + rLabel + ')';
+                  ': (x:' + t.xLabel + ', y:' + t.yLabel + ', r:' + rLabel + ')';
               }
             }
           },
@@ -143,6 +151,8 @@ export default {
           + d.getHours().toString().padStart(2, '0') + ":"
           + d.getMinutes().toString().padStart(2, '0')
       }
+
+      this.data = [];
       querySnapshot.docs.map(doc => {
         console.log(doc.data());
         const createdAt = new Date(doc.data().createdAt.seconds * 1000);
@@ -163,10 +173,11 @@ export default {
           updatedAt: dateFormat(updatedAt),
         });
 
+        const color = this.colorSet.find(value => value.label === doc.data().classification[0]);
         this.data.push(
           {
-            data: [{"x":1 ,"y":1, "r":10}] ,
-            backgroundColor:["#9696ff"],
+            data: [{"x": doc.data().urgencyLevel - 50, "y":doc.data().difficultyLevel - 50, "r": 10}] ,
+            backgroundColor:[color.color],
             label: [doc.data().title]
           }
         );
