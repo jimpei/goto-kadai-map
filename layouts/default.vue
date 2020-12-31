@@ -21,9 +21,9 @@
 
       <v-app-bar-nav-icon v-if="!drawer" @click.stop="drawer = !drawer" />
 
-      <v-btn v-if="!drawer" icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
+<!--      <v-btn v-if="!drawer" icon @click.stop="clipped = !clipped">-->
+<!--        <v-icon>mdi-application</v-icon>-->
+<!--      </v-btn>-->
 
       <v-toolbar-title v-if="!drawer" v-text="title" />
 
