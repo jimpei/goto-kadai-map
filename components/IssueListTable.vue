@@ -7,6 +7,9 @@
             <div class="relative w-full max-w-full flex-grow flex-1">
               <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">Performance</h6>
               <h2 class="text-gray-800 text-xl font-semibold">課題リスト</h2>
+              <div class="add-button">
+                <ModalAddData/>
+              </div>
             </div>
           </div>
         </div>
@@ -27,12 +30,17 @@
 </template>
 
 <style scoped>
+  .add-button {
+    text-align: right;
+  }
 </style>
 
 <script>
+import ModalAddData from "@/components/ModalAddData";
 
 export default {
   props: ['issueList'],
+  comments: ['ModalAddData'],
   data: function() {
     return {
       tableHeader: [
