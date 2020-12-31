@@ -15,7 +15,8 @@
         <div class="p-4 flex-auto">
           <!-- Chart -->
           <div class="relative" style="height:350px">
-            <canvas id="bar-chart"></canvas>
+<!--            <canvas id="bar-chart"></canvas>-->
+            <bubble-chart :chart-data="dataSets" :options="options"></bubble-chart>
           </div>
         </div>
       </v-sheet>
@@ -24,6 +25,7 @@
 </template>
 <script>
 import Chart from "chart.js";
+import { Bubble } from 'vue-chartjs';
 import firebase from '@/plugins/firebase';
 const db = firebase.firestore();
 
@@ -32,33 +34,30 @@ export default {
     return {
       issueList: [],
       issueListSize: 0,
-    }
-  },
-  mounted: function() {
-    this.selectDB();
-    this.$nextTick(function() {
-      let config = {
-        type: "bubble",
-        data: {
-          datasets: [
-            {
-              data: [{"x":10 ,"y":10, "r":10} ,],
-              backgroundColor:[ "rgb(141,63,223)" ],
-              label: ["test1"]
-            },
-            {
-              data: [{"x":-20 ,"y":-20, "r":20} ,],
-              backgroundColor:[ "rgb(141,29,73)"],
-              label: ["test2"]
-            },
-            {
-              data: [{"x":30 ,"y":30, "r":30} ,],
-              backgroundColor:["rgb(16,230,73)"],
-              label: ["test3"]
-            }
-          ]
+      colorSet: [
+        {label: "農業", color: "#62ce81"},
+        {label: "自然災害", color: "#ce4343"},
+        {label: "林業", color: "#055e1f"},
+        {label: "子育て", color: "#e576d2"},
+      ],
+      dataSets: [
+        {
+          data: [{"x":10 ,"y":10, "r":10}],
+          backgroundColor:["#d7adad"],
+          label: ["test1"]
         },
-        options: {
+        {
+          data: [{"x":-20 ,"y":-20, "r":20}],
+          backgroundColor:["rgb(141,29,73)"],
+          label: ["test2"]
+        },
+        {
+          data: [{"x":30 ,"y":30, "r":30}],
+          backgroundColor:["rgb(16,230,73)"],
+          label: ["test3"]
+        }
+      ],
+      options: {
           title: {
             display: false,
             text: "Orders Chart"
@@ -95,11 +94,64 @@ export default {
             align: "end",
             position: "bottom"
           },
-        }
-      };
-      let ctx = document.getElementById("bar-chart").getContext("2d");
-      window.myBar = new Chart(ctx, config);
-    });
+        },
+    }
+  },
+  extends: Bubble,
+  // mounted () {
+  // }
+  mounted: function() {
+    this.renderChart({data: this.dataSets}, this.options)
+
+    this.selectDB();
+    // this.$nextTick(function() {
+    //   let config = {
+    //     type: "bubble",
+    //     data: {
+    //       datasets: this.dateSets,
+    //     },
+    //     options: {
+    //       title: {
+    //         display: false,
+    //         text: "Orders Chart"
+    //       },
+    //       scales: {
+    //         // x軸
+    //         xAxes: [{
+    //           ticks: {max: 50, min: -50,stepSize: 10}
+    //         }],
+    //         // x軸
+    //         yAxes: [{
+    //           ticks: {max: 50,min: -50,stepSize: 10}
+    //         }]
+    //       },
+    //       maintainAspectRatio: false,
+    //       responsive: true,
+    //       tooltips: {
+    //         callbacks: {
+    //           label: function(t, d) {
+    //             var rLabel = d.datasets[t.datasetIndex].data[t.index].r;
+    //             return d.datasets[t.datasetIndex].label +
+    //               ': (x軸:' + t.xLabel + ', y軸:' + t.yLabel + ', 円の大きさ:' + rLabel + ')';
+    //           }
+    //         }
+    //       },
+    //       hover: {
+    //         mode: "nearest",
+    //         intersect: true
+    //       },
+    //       legend: {
+    //         labels: {
+    //           fontColor: "rgba(0,0,0,.4)"
+    //         },
+    //         align: "end",
+    //         position: "bottom"
+    //       },
+    //     }
+    //   };
+    //   let ctx = document.getElementById("bar-chart").getContext("2d");
+    //   window.myBar = new Chart(ctx, config);
+    // });
   },
   methods: {
     async selectDB() {
@@ -133,6 +185,21 @@ export default {
           createdAt: dateFormat(createdAt),
           updatedAt: dateFormat(updatedAt),
         });
+        //         {
+        // data: [{"x":30 ,"y":30, "r":30}],
+        //   backgroundColor:["rgb(16,230,73)"],
+        //   label: ["test3"]
+      // }
+
+        this.dataSets.push(
+          {
+            data: [{"x":3 ,"y":3, "r":30}] ,
+            backgroundColor:["rgb(16,230,73)"],
+            label: ["test3"]
+          }
+        );
+        Chart.update();
+
         this.issueListSize = this.issueList.length;
       })
 
