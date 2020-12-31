@@ -39,40 +39,19 @@ export default {
         {label: "子育て", color: "#e576d2"},
       ],
       chartData: {
-        datasets: [
-          {
-            data: [{"x":10 ,"y":10, "r":10}],
-            backgroundColor:["#d7adad"],
-            label: ["test1"]
-          },
-          {
-            data: [{"x":-20 ,"y":-20, "r":20}],
-            backgroundColor:["rgb(141,29,73)"],
-            label: ["test2"]
-          },
-          {
-            data: [{"x":30 ,"y":30, "r":30}],
-            backgroundColor:["rgb(16,230,73)"],
-            label: ["test3"]
-          }
-        ]
+        datasets: []
       },
       data: [
-        {
-          data: [{"x":10 ,"y":10, "r":10}],
-          backgroundColor:["#d7adad"],
-          label: ["test1"]
-        },
-        {
-          data: [{"x":-20 ,"y":-20, "r":20}],
-          backgroundColor:["rgb(141,29,73)"],
-          label: ["test2"]
-        },
-        {
-          data: [{"x":30 ,"y":30, "r":30}],
-          backgroundColor:["rgb(16,230,73)"],
-          label: ["test3"]
-        }
+        // {
+        //   data: [{"x":10 ,"y":10, "r":10}],
+        //   backgroundColor:["#d7adad"],
+        //   label: ["test1"]
+        // },
+        // {
+        //   data: [{"x":-20 ,"y":-20, "r":20}],
+        //   backgroundColor:["rgb(141,29,73)"],
+        //   label: ["test2"]
+        // },
       ],
       options: {
           title: {
