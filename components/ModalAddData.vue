@@ -150,6 +150,17 @@
         console.log("db insert success.");
         this.isLoad = false;
         this.dialog = false;
+        this.hearingDate = "";
+        this.title = "";
+        this.classification = "";
+        this.contents = "";
+        this.solution = "";
+        this.source = "";
+        this.status = "";
+        this.area = "";
+        this.relatedPopulation = "";
+        this.urgencyLevel = "";
+        this.difficultyLevel = "";
         this.$emit('doneAddData');
       }
     }
