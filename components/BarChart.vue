@@ -1,8 +1,6 @@
 <template>
   <div>
     <div class="w-full xl:w-4/12 px-4">
-    <!--    {{issueListSize}}-->
-    <!--    {{issueList}}-->
       <v-sheet elevation="2" class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
         <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
           <div class="flex flex-wrap items-center">
@@ -17,6 +15,18 @@
           <div class="relative" style="height:400px">
             <bubble-chart :chart-data="chartData" :options="options"></bubble-chart>
           </div>
+        </div>
+
+        <div>
+<!--              {{issueListSize}}-->
+<!--              {{issueList}}-->
+          <v-data-table :headers="tableHeader" :items="issueList" class="elevation-1">
+            <template v-slot:item.classification="{ item }">
+              <v-chip :color="getColor(item.classification)" dark>
+                {{ item.classification }}
+              </v-chip>
+            </template>
+          </v-data-table>
         </div>
       </v-sheet>
     </div>
@@ -33,7 +43,30 @@ const db = firebase.firestore();
 export default {
   data: function() {
     return {
-      issueList: [],
+      tableHeader: [
+        { text: '聞き取り日', value: 'hearingDate' },
+        { text: '題目', value: 'title' },
+        { text: '分類', value: 'classification' },
+        { text: '内容', value: 'contents' },
+        { text: '対応案', value: 'solution' },
+        { text: '情報源', value: 'source' },
+        { text: '関係人口', value: 'relatedPopulation' },
+        { text: '緊急度(0~100)', value: 'urgencyLevel' },
+        { text: '実現難易度(0~100)', value: 'difficultyLevel' },
+      ],
+      issueList: [{
+        hearingDate: "",
+        title: "",
+        classification: "",
+        contents: "",
+        solution: "",
+        source: "",
+        relatedPopulation: "",
+        urgencyLevel: "",
+        difficultyLevel: "",
+        createdAt: "",
+        updatedAt: "",
+      }],
       issueListSize: 0,
       colorSet: [
         {label: "農業", color: "#62ce81"},
@@ -134,6 +167,10 @@ export default {
     this.selectDB();
   },
   methods: {
+    getColor(data) {
+      const color = this.colorSet.find(value => value.label === data[0]);
+      return color ? color.color : 'gray';
+    },
     updateChartData() {
       const newChartData = Object.assign({}, this.chartData);
       newChartData.datasets = this.data;
@@ -146,13 +183,15 @@ export default {
 
       function dateFormat(d) {
         return d.getFullYear() + "/"
-          + (d.getMonth() + 1).toString().padStart(2, '0') + "/"
-          + d.getDate().toString().padStart(2, '0') + " "
-          + d.getHours().toString().padStart(2, '0') + ":"
-          + d.getMinutes().toString().padStart(2, '0')
+          + (d.getMonth() + 1).toString().padStart(2, '0');
+          // + "/"
+          // + d.getDate().toString().padStart(2, '0') + " "
+          // + d.getHours().toString().padStart(2, '0') + ":"
+          // + d.getMinutes().toString().padStart(2, '0')
       }
 
       this.data = [];
+      this.issueList = [];
       querySnapshot.docs.map(doc => {
         console.log(doc.data());
         const createdAt = new Date(doc.data().createdAt.seconds * 1000);
