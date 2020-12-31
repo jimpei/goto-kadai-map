@@ -12,7 +12,7 @@
         </div>
         <div class="p-4 flex-auto">
           <!-- Chart -->
-          <div class="relative" style="height:400px">
+          <div class="relative chart" style="height:400px">
             <bubble-chart :chart-data="chartData" :options="options"></bubble-chart>
           </div>
         </div>
@@ -22,6 +22,9 @@
 </template>
 
 <style scoped>
+  .chart {
+    margin: 10px;
+  }
 </style>
 
 <script>
