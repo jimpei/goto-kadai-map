@@ -30,7 +30,7 @@
     color: #FFFFFF;
   }
   .side-title {
-    margin: 30px 30px 0px 20px;
+    margin: 20px 20px 0px 20px;
   }
   .side-bar {
     box-shadow: 1px -1px 19px 0px rgba(0,0,0,.1), 0 10px 10px -5px rgba(0,0,0,.04);
