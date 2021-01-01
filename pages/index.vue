@@ -56,8 +56,11 @@
 
             <v-col cols="12" sm="12" md="12">
               <BarChart :issueList="issueList"/>
+            </v-col>
+            <v-col cols="12" sm="12" md="12">
               <IssueListTable :issue-list="issueList" @doneAddData="selectDB"/>
             </v-col>
+
 <!--            <v-col cols="12" sm="8" md="6">-->
 <!--              <div class="text-center">-->
 <!--              </div>-->
