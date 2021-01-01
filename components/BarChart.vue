@@ -105,6 +105,9 @@ export default {
         },
     }
   },
+  mounted() {
+    this.updateChartData();
+  },
   watch: {
     issueList() {
       this.data = [];
