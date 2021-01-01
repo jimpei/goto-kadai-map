@@ -116,7 +116,14 @@ export default {
 
         this.data.push(
           {
-            data: [{"x": issue.urgencyLevel - 50, "y":issue.difficultyLevel - 50, "r": 10}] ,
+            data:
+              [{
+                // "x": issue.urgencyLevel - 50 - (Math.random() * 3).toFixed(1),
+                // "y": issue.difficultyLevel - 50 - (Math.random() * 3).toFixed(1),
+                "x": issue.urgencyLevel - 50,
+                "y": issue.difficultyLevel - 50,
+                "r": 7
+              }],
             backgroundColor:[color ? color.color : "gray"],
             label: [issue.title]
           }
