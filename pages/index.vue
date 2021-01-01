@@ -26,7 +26,10 @@
                     <div class="flex flex-wrap items-center">
                       <div class="relative w-full max-w-full flex-grow flex-1">
                         <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">課題件数</h6>
-                        <h2 class="text-gray-800 text-xl font-semibold">{{issueListSize}}件</h2>
+                        <h2 class="class1 text-gray-800 text-xl font-semibold">
+                          <div>{{issueListSize}}件</div>
+                          <v-avatar color="#EF5350"><v-icon dark>mdi-chart-bar</v-icon></v-avatar>
+                        </h2>
                       </div>
                     </div>
                   </div>
@@ -40,7 +43,10 @@
                     <div class="flex flex-wrap items-center">
                       <div class="relative w-full max-w-full flex-grow flex-1">
                         <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">XX率</h6>
-                        <h2 class="text-gray-800 text-xl font-semibold">0.00 %</h2>
+                        <h2 class="class1 text-gray-800 text-xl font-semibold">
+                          <div>0.00 %</div>
+                          <v-avatar color="indigo"><v-icon dark>mdi-percent</v-icon></v-avatar>
+                        </h2>
                       </div>
                     </div>
                   </div>
@@ -94,6 +100,11 @@
   }
   .text-dashboard {
     color: #FFFFFF;
+  }
+  .class1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 </style>
 
