@@ -1,6 +1,6 @@
 <template>
   <v-app >
-    <MenuBar/>
+    <MenuBar @toggleHeader="toggleHeader"/>
 
     <v-main class="background-color">
       <v-container>
@@ -12,7 +12,7 @@
                   <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
                     <div class="flex flex-wrap items-center">
                       <div class="relative w-full max-w-full flex-grow flex-1">
-                        <h4 class="text-gray text-xl font-semibold"></h4>
+                        <h4 class="text-dashboard text-xl font-weight-bold" v-if="displayHeader">DASHBOARD</h4>
                       </div>
                     </div>
                   </div>
@@ -92,6 +92,9 @@
   .background-color {
     background: linear-gradient(180deg, #3cc635 0%, #3cc635 12%, #eef2f7 12%, #eef2f7 100%);
   }
+  .text-dashboard {
+    color: #FFFFFF;
+  }
 </style>
 
 <script>
@@ -127,12 +130,16 @@
           updatedAt: "",
         }],
         issueListSize: 0,
+        displayHeader: false,
       }
     },
     mounted: function() {
       this.selectDB();
     },
     methods: {
+      toggleHeader() {
+        this.displayHeader = !this.displayHeader;
+      },
       async selectDB() {
         console.log("select db start.");
         const querySnapshot = await db.collection('issueList').get();

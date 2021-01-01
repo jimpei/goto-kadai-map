@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" mobile-breakpoint="800" fixed app class="side-bar">
+    <v-navigation-drawer v-model="displayHeader" mobile-breakpoint="800" fixed app class="side-bar">
       <div class="side-title"><h4 class="text-gray-800 text-xl font-semibold">{{title}}</h4></div>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
@@ -16,10 +16,10 @@
     </v-navigation-drawer>
 
     <!-- header   -->
-    <v-app-bar fixed app color="#eef2f7" v-if="!drawer">
+    <v-app-bar fixed app color="#eef2f7" v-if="!displayHeader">
       <!-- sidebarにタイトルが表示されるため、sidebar表示時にはこっちのタイトルを消す -->
-      <v-app-bar-nav-icon v-if="!drawer" @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-if="!drawer"><h5 class="text-gray-800 text-xl font-semibold">{{title}}</h5></v-toolbar-title>
+      <v-app-bar-nav-icon v-if="!displayHeader" @click.stop="displayHeader = !displayHeader" />
+      <v-toolbar-title v-if="!displayHeader"><h5 class="text-gray-800 text-xl font-semibold">{{title}}</h5></v-toolbar-title>
       <v-spacer />
     </v-app-bar>
   </div>
@@ -51,7 +51,7 @@
       return {
         myCityName: process.env.MY_CITY_NAME_JP,
         title: process.env.MY_CITY_NAME_JP + '課題MAP',
-        drawer: false,
+        displayHeader: false,
         items: [
           {
             icon: 'mdi-apps',
@@ -66,6 +66,11 @@
         ],
       }
     },
+    watch: {
+      displayHeader() {
+        this.$emit('toggleHeader', this.displayHeader);
+      }
+    }
   }
 </script>
 
