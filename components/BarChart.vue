@@ -95,11 +95,12 @@ export default {
             intersect: true
           },
           legend: {
-            labels: {
-              fontColor: "rgba(0,0,0,.4)"
-            },
-            align: "end",
-            position: "bottom"
+            display: false,
+            // labels: {
+            //   fontColor: "rgba(0,0,0,.4)"
+            // },
+            // align: "end",
+            // position: "bottom"
           },
         },
     }
