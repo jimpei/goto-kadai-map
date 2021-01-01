@@ -12,8 +12,7 @@
                   <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
                     <div class="flex flex-wrap items-center">
                       <div class="relative w-full max-w-full flex-grow flex-1">
-                        <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold" ></h6>
-                        <h2 class="text-gray-800 text-xl font-semibold"></h2>
+                        <h4 class="text-gray text-xl font-semibold"></h4>
                       </div>
                     </div>
                   </div>
@@ -26,8 +25,8 @@
                   <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
                     <div class="flex flex-wrap items-center">
                       <div class="relative w-full max-w-full flex-grow flex-1">
-                        <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">Performance</h6>
-                        <h2 class="text-gray-800 text-xl font-semibold">課題MAP</h2>
+                        <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">課題件数</h6>
+                        <h2 class="text-gray-800 text-xl font-semibold">{{issueListSize}}件</h2>
                       </div>
                     </div>
                   </div>
@@ -40,8 +39,8 @@
                   <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
                     <div class="flex flex-wrap items-center">
                       <div class="relative w-full max-w-full flex-grow flex-1">
-                        <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">Performance</h6>
-                        <h2 class="text-gray-800 text-xl font-semibold">課題MAP</h2>
+                        <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">XX率</h6>
+                        <h2 class="text-gray-800 text-xl font-semibold">0.00 %</h2>
                       </div>
                     </div>
                   </div>
@@ -55,31 +54,29 @@
             </v-col>
 
 
-
-
             <v-col cols="12" sm="12" md="12">
               <BarChart :issueList="issueList"/>
               <IssueListTable :issue-list="issueList" @doneAddData="selectDB"/>
             </v-col>
-            <v-col cols="12" sm="8" md="6">
-              <div class="text-center">
-              </div>
-              <v-card>
-                <v-card-title class="headline">Welcome to the Vuetify + Nuxt.js template</v-card-title>
-                <v-card-text>
-                  <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-                  <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-                  <hr class="my-3">
-                  <a href="https://nuxtjs.org/" target="_blank" rel="noopener noreferrer">Nuxt Documentation</a>
-                  <br>
-                  <a href="https://github.com/nuxt/nuxt.js" target="_blank" rel="noopener noreferrer">Nuxt GitHub</a>
-                </v-card-text>
-                <v-card-actions>
-                  <v-spacer />
-                  <v-btn color="primary" nuxt to="/inspire">Continue</v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-col>
+<!--            <v-col cols="12" sm="8" md="6">-->
+<!--              <div class="text-center">-->
+<!--              </div>-->
+<!--              <v-card>-->
+<!--                <v-card-title class="headline">Welcome to the Vuetify + Nuxt.js template</v-card-title>-->
+<!--                <v-card-text>-->
+<!--                  <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>-->
+<!--                  <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>-->
+<!--                  <hr class="my-3">-->
+<!--                  <a href="https://nuxtjs.org/" target="_blank" rel="noopener noreferrer">Nuxt Documentation</a>-->
+<!--                  <br>-->
+<!--                  <a href="https://github.com/nuxt/nuxt.js" target="_blank" rel="noopener noreferrer">Nuxt GitHub</a>-->
+<!--                </v-card-text>-->
+<!--                <v-card-actions>-->
+<!--                  <v-spacer />-->
+<!--                  <v-btn color="primary" nuxt to="/inspire">Continue</v-btn>-->
+<!--                </v-card-actions>-->
+<!--              </v-card>-->
+<!--            </v-col>-->
           </v-row>
         </div>
       </v-container>
@@ -126,6 +123,7 @@
           createdAt: "",
           updatedAt: "",
         }],
+        issueListSize: 0,
       }
     },
     mounted: function() {
@@ -169,6 +167,7 @@
           });
 
         })
+        this.issueListSize = this.issueList.length;
       }
     }
   }
