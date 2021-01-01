@@ -51,7 +51,7 @@
       return {
         myCityName: process.env.MY_CITY_NAME_JP,
         title: process.env.MY_CITY_NAME_JP + '課題MAP',
-        displayHeader: false,
+        displayHeader: null,
         items: [
           {
             icon: 'mdi-apps',
