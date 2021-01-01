@@ -11,7 +11,6 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
-        <SideBarContents/>
       </v-list>
     </v-navigation-drawer>
 

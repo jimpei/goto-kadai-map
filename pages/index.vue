@@ -86,6 +86,20 @@
 <!--                </v-card-actions>-->
 <!--              </v-card>-->
 <!--            </v-col>-->
+            <v-col cols="12" sm="12" md="12">
+              <div class="w-full xl:w-4/12 px-4">
+                <v-sheet elevation="2" class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                  <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
+                    <div class="flex flex-wrap items-center">
+                      <div class="relative w-full max-w-full flex-grow flex-1">
+                        <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">管理者用</h6>
+                        <ModalLogin/>
+                      </div>
+                    </div>
+                  </div>
+                </v-sheet>
+              </div>
+            </v-col>
           </v-row>
         </div>
       </v-container>
@@ -115,12 +129,14 @@
   import Footer from '~/components/Footer.vue'
   import BarChart from '~/components/BarChart.vue'
   import IssueListTable from '~/components/IssueListTable.vue'
+  import ModalLogin from "~/components/ModalLogin.vue";
 
   import firebase from '@/plugins/firebase';
   const db = firebase.firestore();
 
   export default {
     components: {
+      ModalLogin,
       MenuBar,
       Footer,
       BarChart,
