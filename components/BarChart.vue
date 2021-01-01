@@ -64,7 +64,23 @@ export default {
           scales: {
             // x軸
             xAxes: [{
-              ticks: {max: 50, min: -50,stepSize: 10},
+              ticks: {
+                max: 50,
+                min: -50,
+                stepSize: 10,
+                callback: function(value, index, values) {
+                  if (value === -50) {
+                    return "小";
+                  }
+                  if (value === 0) {
+                    return "中";
+                  }
+                  if (value === 50) {
+                    return "大";
+                  }
+                  return "　";
+                }
+              },
               scaleLabel: {
                 display: true,
                 labelString: '緊急度'
@@ -72,7 +88,23 @@ export default {
             }],
             // y軸
             yAxes: [{
-              ticks: {max: 50,min: -50,stepSize: 10},
+              ticks: {
+                max: 50,
+                min: -50,
+                stepSize: 10,
+                callback: function(value, index, values) {
+                  if (value === -50) {
+                    return "小";
+                  }
+                  if (value === 0) {
+                    return "中";
+                  }
+                  if (value === 50) {
+                    return "大";
+                  }
+                  return "　";
+                }
+              },
               scaleLabel: {
                 display: true,
                 labelString: '実現難易度'
@@ -118,10 +150,10 @@ export default {
           {
             data:
               [{
-                // "x": issue.urgencyLevel - 50 - (Math.random() * 3).toFixed(1),
-                // "y": issue.difficultyLevel - 50 - (Math.random() * 3).toFixed(1),
-                "x": issue.urgencyLevel - 50,
-                "y": issue.difficultyLevel - 50,
+                "x": issue.urgencyLevel - 50 - (Math.random() * 3).toFixed(1),
+                "y": issue.difficultyLevel - 50 - (Math.random() * 3).toFixed(1),
+                // "x": issue.urgencyLevel - 50,
+                // "y": issue.difficultyLevel - 50,
                 "r": 7
               }],
             backgroundColor:[color ? color.color : "gray"],
