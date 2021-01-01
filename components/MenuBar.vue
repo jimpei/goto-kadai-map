@@ -1,7 +1,12 @@
 <template>
   <div>
     <v-navigation-drawer v-model="displayHeader" mobile-breakpoint="800" fixed app class="side-bar">
-      <div class="side-title"><h4 class="text-gray-800 text-xl font-semibold">{{title}}</h4></div>
+      <div class="side-title">
+        <h4 class="class1 text-gray-800 text-xl font-semibold">
+          <div>{{title}}</div>
+          <v-btn icon color="gray" @click="toggleMenu"><v-icon>mdi-minus</v-icon></v-btn>
+        </h4>
+      </div>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-item-action>
@@ -37,6 +42,12 @@
   .v-navigation-drawer__border{
     width: 0;
   }
+  .class1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
 
 </style>
 
@@ -68,6 +79,11 @@
     watch: {
       displayHeader() {
         this.$emit('toggleHeader', this.displayHeader);
+      }
+    },
+    methods: {
+      toggleMenu() {
+        this.displayHeader = !this.displayHeader;
       }
     }
   }
