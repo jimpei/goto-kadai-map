@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" mobile-breakpoint="800" fixed app class="side-bar">
-      <div class="side-title">{{title}}</div>
+      <div class="side-title"><h4 class="text-gray-800 text-xl font-semibold">{{title}}</h4></div>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
           <v-list-item-action>
@@ -16,16 +16,19 @@
     </v-navigation-drawer>
 
     <!-- header   -->
-    <v-app-bar flat fixed app color="#eef2f7">
+    <v-app-bar fixed app color="#eef2f7" v-if="!drawer">
       <!-- sidebarにタイトルが表示されるため、sidebar表示時にはこっちのタイトルを消す -->
       <v-app-bar-nav-icon v-if="!drawer" @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-if="!drawer" v-text="title" />
+      <v-toolbar-title v-if="!drawer"><h4 class="text-gray-800 text-xl font-semibold">{{title}}</h4></v-toolbar-title>
       <v-spacer />
     </v-app-bar>
   </div>
 </template>
 
 <style scoped>
+  .title {
+    color: #FFFFFF;
+  }
   .side-title {
     margin: 30px 30px 0px 20px;
   }

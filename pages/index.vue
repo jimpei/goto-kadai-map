@@ -7,6 +7,57 @@
         <div>
           <v-row justify="center" align="center">
             <v-col cols="12" sm="12" md="12">
+              <div class="w-full xl:w-4/12 px-4">
+                <div elevation="2" class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                  <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
+                    <div class="flex flex-wrap items-center">
+                      <div class="relative w-full max-w-full flex-grow flex-1">
+                        <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold" ></h6>
+                        <h2 class="text-gray-800 text-xl font-semibold"></h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </v-col>
+            <v-col cols="12" sm="6" md="6">
+              <div class="w-full xl:w-4/12 px-4">
+                <v-sheet elevation="2" class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                  <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
+                    <div class="flex flex-wrap items-center">
+                      <div class="relative w-full max-w-full flex-grow flex-1">
+                        <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">Performance</h6>
+                        <h2 class="text-gray-800 text-xl font-semibold">課題MAP</h2>
+                      </div>
+                    </div>
+                  </div>
+                </v-sheet>
+              </div>
+            </v-col>
+            <v-col cols="12" sm="6" md="6">
+              <div class="w-full xl:w-4/12 px-4">
+                <v-sheet elevation="2" class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                  <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
+                    <div class="flex flex-wrap items-center">
+                      <div class="relative w-full max-w-full flex-grow flex-1">
+                        <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold">Performance</h6>
+                        <h2 class="text-gray-800 text-xl font-semibold">課題MAP</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <!--                  <div class="p-4 flex-auto">-->
+                  <!--                    <div class="relative">-->
+                  <!--                      aaaaaa-->
+                  <!--                    </div>-->
+                  <!--                  </div>-->
+                </v-sheet>
+              </div>
+            </v-col>
+
+
+
+
+            <v-col cols="12" sm="12" md="12">
               <BarChart :issueList="issueList"/>
               <IssueListTable :issue-list="issueList" @doneAddData="selectDB"/>
             </v-col>
@@ -39,7 +90,7 @@
 </template>
 <style scoped>
   .background-color {
-    background-color: #eef2f7;
+    background: linear-gradient(180deg, #3cc635 0%, #3cc635 12%, #eef2f7 12%, #eef2f7 100%);
   }
 </style>
 
