@@ -6,7 +6,7 @@
           <div class="flex flex-wrap items-center">
             <div class="relative w-full max-w-full flex-grow flex-1">
               <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold"></h6>
-              <h2 class="text-gray-800 text-xl font-semibold">課題リスト</h2>
+              <h3 class="text-gray-800 text-xl font-semibold">課題リスト</h3>
               <div class="add-button">
                 <ModalAddData @doneAddData="doneAddData"/>
               </div>

@@ -19,7 +19,7 @@
     <v-app-bar fixed app color="#eef2f7" v-if="!drawer">
       <!-- sidebarにタイトルが表示されるため、sidebar表示時にはこっちのタイトルを消す -->
       <v-app-bar-nav-icon v-if="!drawer" @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-if="!drawer"><h4 class="text-gray-800 text-xl font-semibold">{{title}}</h4></v-toolbar-title>
+      <v-toolbar-title v-if="!drawer"><h5 class="text-gray-800 text-xl font-semibold">{{title}}</h5></v-toolbar-title>
       <v-spacer />
     </v-app-bar>
   </div>
