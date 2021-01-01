@@ -9,7 +9,7 @@
             <v-col cols="12" sm="12" md="12">
               <div class="w-full xl:w-4/12 px-4">
                 <div elevation="2" class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-                  <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
+                  <div class="padding-left rounded-t mb-0 py-3 bg-transparent">
                     <div class="flex flex-wrap items-center">
                       <div class="relative w-full max-w-full flex-grow flex-1">
                         <h4 class="text-dashboard text-xl font-weight-bold" v-if="displayHeader">DASHBOARD</h4>
@@ -104,6 +104,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .padding-left {
+    padding-left: 0px;
   }
 </style>
 
