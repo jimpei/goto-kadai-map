@@ -89,9 +89,8 @@
           </v-row>
         </div>
       </v-container>
+      <Footer/>
     </v-main>
-
-    <Footer/>
   </v-app>
 </template>
 <style scoped>
