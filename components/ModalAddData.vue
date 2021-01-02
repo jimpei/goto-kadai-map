@@ -62,14 +62,24 @@
               <v-col cols="12" sm="6">
                 <v-text-field v-model="status" label="取り組みステータス" hint="取り組みステータスです"></v-text-field>
               </v-col>
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" sm="6" md="6">
                 <v-text-field v-model="relatedPopulation" label="関係人口" hint="1, 1000など"></v-text-field>
               </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="urgencyLevel" label="緊急度" hint="0~100"></v-text-field>
+              <v-col cols="12" sm="6" md="6">
+                <v-slider v-model="urgencyLevel" label="緊急度" class="align-center" min=0 max=100 hide-details>
+                  <template v-slot:append>
+                    <v-text-field v-model="urgencyLevel"
+                                  class="mt-0 pt-0" hide-details single-line type="number" style="width: 45px"/>
+                  </template>
+                </v-slider>
               </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="difficultyLevel" label="実現難易度" hint="0~100"></v-text-field>
+              <v-col cols="12" sm="6" md="6">
+                <v-slider v-model="difficultyLevel" label="実現難易度" class="align-center" min=0 max=100 hide-details>
+                  <template v-slot:append>
+                    <v-text-field v-model="difficultyLevel"
+                                  class="mt-0 pt-0" hide-details single-line type="number" style="width: 45px"/>
+                  </template>
+                </v-slider>
               </v-col>
             </v-row>
           </v-container>
