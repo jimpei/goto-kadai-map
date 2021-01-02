@@ -42,28 +42,28 @@
                 </v-menu>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field v-model="classification" label="分類" hint="分類です"></v-text-field>
+                <v-text-field v-model="classification" label="分類" hint="分類です"/>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="title" label="題目" hint="タイトルです"></v-text-field>
+                <v-text-field v-model="title" label="題目" hint="タイトルです"/>
               </v-col>
               <v-col cols="12">
-                <v-textarea v-model="contents" label="内容" hint="内容です" rows="3"></v-textarea>
+                <v-textarea v-model="contents" label="内容" hint="内容です" rows="3"/>
               </v-col>
               <v-col cols="12">
-                <v-textarea v-model="solution" label="対応案" hint="対応案です" rows="3"></v-textarea>
+                <v-textarea v-model="solution" label="対応案" hint="対応案です" rows="3"/>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="source" label="情報源" hint="情報源です"></v-text-field>
+                <v-text-field v-model="source" label="情報源" hint="情報源です"/>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="area" label="地区" hint="地区です"></v-text-field>
+                <v-text-field v-model="area" label="地区" hint="地区です"/>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field v-model="status" label="取り組みステータス" hint="取り組みステータスです"></v-text-field>
+                <v-text-field v-model="status" label="取り組みステータス" hint="取り組みステータスです"/>
               </v-col>
               <v-col cols="12" sm="6" md="6">
-                <v-text-field v-model="relatedPopulation" label="関係人口" hint="1, 1000など"></v-text-field>
+                <v-text-field v-model="relatedPopulation" label="関係人口" hint="1, 1000など"/>
               </v-col>
               <v-col cols="12" sm="6" md="6">
                 <v-slider v-model="urgencyLevel" label="緊急度" class="align-center" min=0 max=100 step="10" hide-details>
@@ -85,7 +85,7 @@
         </v-card-text>
 
         <v-card-actions>
-          <v-spacer></v-spacer>
+          <v-spacer/>
           <v-btn color="blue darken-1" text @click="dialog = false">☓ 閉じる</v-btn>
           <v-btn v-if="mode === 'register'" color="blue darken-1" dark @click="insertData" :loading="isLoad">登録</v-btn>
           <v-btn v-if="mode === 'edit'" color="blue darken-1" dark @click="updateData" :loading="isLoad">更新</v-btn>
