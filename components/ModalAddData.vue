@@ -48,10 +48,10 @@
                 <v-text-field v-model="title" label="題目" hint="タイトルです"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="contents" label="内容" hint="内容です"></v-text-field>
+                <v-textarea v-model="contents" label="内容" hint="内容です" rows="3"></v-textarea>
               </v-col>
               <v-col cols="12">
-                <v-text-field v-model="solution" label="対応案" hint="対応案です"></v-text-field>
+                <v-textarea v-model="solution" label="対応案" hint="対応案です" rows="3"></v-textarea>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field v-model="source" label="情報源" hint="情報源です"></v-text-field>
