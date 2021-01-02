@@ -3,9 +3,14 @@
     <v-dialog v-model="dialog" max-width="700px">
 
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on">
+        <v-btn v-if="mode === 'register'"
+               color="primary" dark v-bind="attrs" v-on="on">
           課題を追加
         </v-btn>
+        <v-icon v-if="mode === 'edit'" @click="editDataInit"
+                small class="mr-2" v-bind="attrs" v-on="on">
+          mdi-pencil
+        </v-icon>
       </template>
 
       <v-card>
@@ -91,6 +96,10 @@
   export default {
     components: {
     },
+    props: [
+      'mode',
+      'editData'
+    ],
     data() {
       return {
         dialog: false,
@@ -109,7 +118,24 @@
         difficultyLevel: '',
       }
     },
+    mounted() {
+      console.log("mounted");
+    },
     methods: {
+      editDataInit() {
+        console.log(this.editData);
+        this.hearingDate = this.editData.hearingDate;
+        this.title = this.editData.title;
+        this.classification = this.editData.classification;
+        this.contents = this.editData.contents;
+        this.solution = this.editData.solution;
+        this.source = this.editData.source;
+        this.status = this.editData.status;
+        this.area = this.editData.area;
+        this.relatedPopulation = this.editData.relatedPopulation;
+        this.urgencyLevel = this.editData.urgencyLevel;
+        this.difficultyLevel = this.editData.difficultyLevel;
+      },
       async updateData() {
         this.isLoad = true;
         console.log("updateDate start.");

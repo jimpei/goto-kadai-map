@@ -8,7 +8,7 @@
               <h6 class="uppercase text-gray-500 mb-1 text-xs font-semibold"></h6>
               <h3 class="text-gray-800 text-xl font-semibold">課題リスト</h3>
               <div class="add-button">
-                <ModalAddData @doneAddData="doneAddData"/>
+                <ModalAddData :mode="'register'" @doneAddData="doneAddData"/>
               </div>
             </div>
           </div>
@@ -20,6 +20,9 @@
                 <v-chip x-small :color="getColor(item.classification)" dark>
                   {{ item.classification }}
                 </v-chip>
+              </template>
+              <template v-slot:item.actions="{ item }">
+                <ModalAddData :mode="'edit'" :editData="item" @doneAddData="doneAddData"/>
               </template>
             </v-data-table>
           </div>
@@ -55,6 +58,7 @@ export default {
         { text: '関係人口', value: 'relatedPopulation' },
         { text: '緊急度(0~100)', value: 'urgencyLevel' },
         { text: '実現難易度(0~100)', value: 'difficultyLevel' },
+        { text: '', value: 'actions', sortable: false },
       ],
       issueListSize: 0,
       colorSet: [
@@ -72,7 +76,7 @@ export default {
     },
     doneAddData() {
       this.$emit('doneAddData');
-    }
+    },
   }
 };
 </script>
