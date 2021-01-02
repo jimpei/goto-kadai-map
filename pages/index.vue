@@ -140,6 +140,7 @@
     data: function () {
       return {
         issueList: [{
+          issueId: "",
           hearingDate: "",
           title: "",
           classification: "",
@@ -185,6 +186,7 @@
           const updatedAt = new Date(doc.data().updatedAt.seconds * 1000);
 
           this.issueList.push({
+            issueId: doc.id,
             hearingDate: doc.data().hearingDate,
             title: doc.data().title,
             classification: doc.data().classification,
